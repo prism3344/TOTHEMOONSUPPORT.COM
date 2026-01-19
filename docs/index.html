@@ -3,11 +3,36 @@
         <style>
             h1 {color: white; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;}
             p {color: white;}
-            body {background-attachment: fixed; /* Tło się nie przewija */
-  background-size: cover;}
+            #space-background {
+              background-attachment: fixed; /* Tło się nie przewija */
+              background-size: cover;
+              position: fixed;
+              top: -10%; /* Wychodzimy poza krawędzie, aby uniknąć białych rogów */
+              left: -10%;
+              width: 120%;
+              height: 120%;
+              background: url('ziem2.jpg') no-repeat center center;
+              background-size: cover;
+              z-index: -1; /* Tło pod spodem */
+              will-change: transform; /* Optymalizacja wydajności */
+            }
         </style>
     </head>
-    <body style="background-image: url('ziem2.jpg');">
+    <body">
+        <script>
+        const bg = document.getElementById('space-background');
+        let angle = 0;
+        const speed = 0.05; 
+        
+        function rotateBackground() {
+          angle += speed;
+          bg.style.transform = `rotate(${angle}deg)`;
+          
+          requestAnimationFrame(rotateBackground);
+        }\
+                   
+        rotateBackground();
+        </script>
 
         <center>
             <br>
@@ -58,3 +83,4 @@
     </body>
 
 </html>
+
